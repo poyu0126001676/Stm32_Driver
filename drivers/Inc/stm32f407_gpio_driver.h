@@ -9,6 +9,9 @@
 #define INC_STM32F407_GPIO_DRIVER_H_
 
 #include "stm32f407.h"
+#include <stdio.h>
+#include <stddef.h>
+
 
 typedef struct{
 	uint8_t GPIO_PinNumber;			// possible values from @GPIO_PIN_NUMBERS
@@ -31,9 +34,11 @@ typedef struct{
 
 
 
-/*
- *     Prototypes for the APIs
- */
+/************************************************************************************************
+ *
+ *                                        Prototypes for the APIs
+ *
+ ************************************************************************************************/
 
 /*
  *   Initialize and De-Initialize
@@ -57,7 +62,8 @@ void GPIO_ToggleOutputPin(GPIO_RegDef_t *pGPIOx, uint8_t PinNumber);
 /*
  *   IRQ configuration and Handling
  */
-void GPIO_IRQConfig(uint8_t IRQNumber, uint8_t IRQPriority, uint8_t EnorDi);
+void GPIO_IRQInterruptConfig(uint8_t IRQNumber, uint8_t EnorDi);
+void GPIO_IRQPriorityConfig(uint8_t IRQNumber, uint32_t IRQPriority);
 void GPIO_IRQHandling(uint8_t PinNumber);
 
 
